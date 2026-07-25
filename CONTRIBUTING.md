@@ -50,6 +50,14 @@ REST-compliant deployment:
 - No emergency hotfixes without REST approval
 - Every deployment must include a "wellness check" for the team
 
+## Support the Mission
+
+If you wish, you can transfer an enormous amount of money to a random Jean Michel account in the Bahamas or Ireland, and then rest.
+
+**Sponsor this project:** [link.mercadopago.cl/jeanmichelai](https://link.mercadopago.cl/jeanmichelai)
+
+Your contribution fuels wellness for vibe coders everywhere. 💰🧘
+
 ---
 
 **Remember: This project is built on the principle that REST makes better code.**
