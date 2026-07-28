@@ -71,6 +71,30 @@ Your code will be there. Promise. 🌙
 
 ---
 
+## The Idea Repos 💡
+
+Each Jean Michel idea lives as its own standalone repo-shaped project
+(one folder = one future repo, each with its own README, LICENSE and the
+contribution link):
+
+- ⏰ [**open-clowk**](open-clowk) — the desktop mascot. After N minutes
+  without a pause (90 by default, you decide), the orange pixel robot walks
+  onto your screen and opens every clock. `npm run demo` to see it now.
+  Plus the chaotic CLI (`open-clowk --all`). Tic tac, MF.
+- 👜 [**agent-hermes-bag**](agent-hermes-bag) — the agent that insists.
+  Ask it if your bag is on the way (EN/FR/ES), then send its funding
+  message via Gmail, Outlook, WhatsApp or Instagram. Just open
+  `agent-hermes-bag/index.html`.
+
+Jean Michel makes you rest. Open Clowk makes you forget. Balance.
+
+## Contribute 💸
+
+Every Jean Michel repo runs on voluntary fuel:
+**https://link.mercadopago.cl/jeanmichelai**
+
+---
+
 ## Why Jean-Michel?
 
 Because even Jean-Michel Basquiat knew you can't create forever. You need REST.
