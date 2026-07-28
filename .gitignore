@@ -16,3 +16,6 @@ build/
 .coverage/
 coverage/
 .turbo/
+
+# Fetched locally by agent-hermes-bag/assets/fetch.sh
+agent-hermes-bag/assets/agent-hermes-bag.png

@@ -1,0 +1,17 @@
+{
+  "name": "agent-hermes-bag",
+  "version": "1.0.0",
+  "description": "An agent with one (1) skill: insisting. Ask it if your Hermes bag is on the way (EN/FR/ES), then share the funding message via Gmail, Outlook, WhatsApp or Instagram.",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "agent",
+    "hermes-bag",
+    "manifestation",
+    "jean-michel",
+    "satire"
+  ],
+  "author": "jourdanlucente-maker",
+  "license": "MIT"
+}

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Hermes Bag 👜</title>
+<!-- Link preview: when this page is hosted (GitHub Pages), sharing its URL
+     renders a big image card on WhatsApp, Instagram, iMessage, Telegram… -->
+<meta property="og:title" content="Agent Hermes Bag">
+<meta property="og:description" content="An agent with one (1) skill: insisting. Until you get a real Hermes bag.">
+<meta property="og:image" content="https://d8j0ntlcm91z4.cloudfront.net/user_39GrJSxSPVFsFnh94GJ8Kef3kcI/hf_20260727_203930_f1459ff7-0c2e-46b0-b653-c20db30ec694.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://d8j0ntlcm91z4.cloudfront.net/user_39GrJSxSPVFsFnh94GJ8Kef3kcI/hf_20260727_203930_f1459ff7-0c2e-46b0-b653-c20db30ec694.png">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh;
+    background: radial-gradient(circle at 50% -10%, #0d47d8 0%, #002fa7 45%, #001d68 100%);
+    color: #f5f1e6;
+    font-family: Georgia, 'Times New Roman', serif;
+    padding: 40px 18px 60px;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .wrap { width: 100%; max-width: 680px; }
+
+  /* header */
+  header { text-align: center; margin-bottom: 30px; }
+  .bag { font-size: 64px; position: relative; display: inline-block; animation: floaty 4s ease-in-out infinite; }
+  .bag::before, .bag::after { content: '🪽'; font-size: 30px; position: absolute; top: 12px; }
+  .bag::before { left: -26px; transform: scaleX(-1); }
+  .bag::after { right: -26px; }
+  @keyframes floaty { 50% { transform: translateY(-8px); } }
+  h1 { font-size: 34px; letter-spacing: 3px; margin-top: 8px; font-weight: 400; }
+  .subtitle { font-style: italic; color: #bcd0ff; margin-top: 6px; font-size: 15px; }
+
+  /* language toggle */
+  .langs { display: flex; gap: 8px; justify-content: center; margin: 22px 0; }
+  .langs button {
+    font: 14px Georgia, serif; letter-spacing: 1px;
+    background: transparent; color: #bcd0ff;
+    border: 1px solid rgba(188,208,255,.45); border-radius: 20px;
+    padding: 7px 18px; cursor: pointer;
+  }
+  .langs button.active { background: #f5f1e6; color: #002fa7; border-color: #f5f1e6; font-weight: bold; }
+
+  .card {
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.16);
+    border-radius: 16px;
+    padding: 24px 26px;
+    margin-bottom: 22px;
+    backdrop-filter: blur(4px);
+  }
+  .card h2 { font-size: 13px; letter-spacing: 3px; color: #ffd35c; text-transform: uppercase; margin-bottom: 14px; }
+
+  /* chat */
+  #chat-log { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+  .msg { max-width: 85%; padding: 10px 14px; border-radius: 14px; font-size: 15px; line-height: 1.45; }
+  .msg.user { align-self: flex-end; background: #f5f1e6; color: #00227a; border-bottom-right-radius: 4px; }
+  .msg.agent { align-self: flex-start; background: rgba(0,0,0,.28); border: 1px solid rgba(255,211,92,.35); border-bottom-left-radius: 4px; }
+  .chat-row { display: flex; gap: 10px; }
+  #chat-input {
+    flex: 1; font: 15px Georgia, serif; color: #f5f1e6;
+    background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.25);
+    border-radius: 10px; padding: 11px 14px;
+  }
+  #chat-input::placeholder { color: rgba(245,241,230,.5); font-style: italic; }
+  #chat-send {
+    font: bold 15px Georgia, serif; background: #ffd35c; color: #00227a;
+    border: none; border-radius: 10px; padding: 11px 20px; cursor: pointer;
+  }
+
+  /* the message */
+  #message {
+    white-space: pre-wrap; font-size: 14.5px; line-height: 1.6;
+    background: rgba(0,0,0,.22); border-radius: 10px; padding: 18px;
+    border: 1px solid rgba(255,255,255,.14);
+    max-height: 340px; overflow-y: auto;
+  }
+  #message a { color: #ffd35c; word-break: break-all; }
+
+  /* visual */
+  #visual-wrap { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  #visual-img {
+    width: 110px; height: 110px; border-radius: 12px; object-fit: cover;
+    border: 1px solid rgba(255,255,255,.28); cursor: pointer; flex-shrink: 0;
+    box-shadow: 0 8px 22px rgba(0,0,0,.35);
+  }
+  .visual-caption { font-size: 13px; color: #bcd0ff; font-style: italic; line-height: 1.5; }
+
+  /* share */
+  .share-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .share-row button {
+    font: bold 14px Georgia, serif; cursor: pointer;
+    border: none; border-radius: 10px; padding: 12px 16px; color: #fff;
+    display: flex; align-items: center; gap: 7px;
+  }
+  #share-gmail { background: #d93025; }
+  #share-outlook { background: #0f6cbd; }
+  #share-whatsapp { background: #1faa53; }
+  #share-instagram { background: linear-gradient(45deg, #7b2ff7, #d62976, #ff9a3c); }
+  #share-native { background: #ffd35c; color: #00227a; }
+  .share-row.secondary { margin-top: 8px; }
+  .share-row.secondary button { background: rgba(255,255,255,.14); font-size: 13px; padding: 9px 13px; }
+  .share-hint {
+    font-size: 13px; line-height: 1.5; color: #ffd35c;
+    background: rgba(255,211,92,.09); border: 1px solid rgba(255,211,92,.28);
+    border-radius: 10px; padding: 11px 14px; margin-top: 16px;
+  }
+  .share-note { font-size: 13px; color: #d8e5ff; margin-top: 12px; line-height: 1.5; min-height: 18px; }
+
+  .legal {
+    font-size: 12px; line-height: 1.55; color: #a9bdf5;
+    border-left: 3px solid #ffd35c; padding-left: 14px;
+  }
+
+  /* guide overlay */
+  #guide {
+    position: fixed; inset: 0; background: rgba(0, 12, 48, .78);
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; z-index: 50; backdrop-filter: blur(3px);
+  }
+  #guide[hidden] { display: none; }
+  .guide-card {
+    background: #f5f1e6; color: #00227a; border-radius: 18px;
+    padding: 28px 30px; max-width: 430px; width: 100%;
+    box-shadow: 0 24px 60px rgba(0,0,0,.5);
+    animation: pop .25s cubic-bezier(.2,1.6,.4,1);
+  }
+  @keyframes pop { from { transform: scale(.85); opacity: 0; } }
+  .guide-title { font-size: 20px; font-weight: bold; margin-bottom: 16px; }
+  #guide-steps { margin: 0 0 20px 20px; }
+  #guide-steps li { font-size: 15px; line-height: 1.5; margin-bottom: 11px; }
+  #guide-steps kbd {
+    background: #00227a; color: #fff; border-radius: 6px;
+    padding: 2px 8px; font: bold 14px 'SF Mono', Menlo, monospace;
+  }
+  .guide-buttons { display: flex; gap: 10px; }
+  .guide-buttons button {
+    font: bold 14px Georgia, serif; cursor: pointer; flex: 1;
+    border-radius: 10px; padding: 12px; border: 2px solid #00227a;
+  }
+  #guide-recopy { background: #f5f1e6; color: #00227a; }
+  #guide-close { background: #00227a; color: #ffd35c; }
+
+  footer { text-align: center; margin-top: 8px; font-size: 13.5px; color: #bcd0ff; }
+  footer a { color: #ffd35c; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="bag">👜</span>
+    <h1>AGENT HERMES BAG</h1>
+    <p class="subtitle" id="t-subtitle">Some say Agent Hermes Douchebag. Not entirely fair.</p>
+  </header>
+
+  <div class="langs">
+    <button data-lang="en" class="active">EN</button>
+    <button data-lang="fr">FR</button>
+    <button data-lang="es">ES</button>
+  </div>
+
+  <div class="card">
+    <h2 id="t-chat-title">Ask the agent</h2>
+    <div id="chat-log"></div>
+    <div class="chat-row">
+      <input id="chat-input" placeholder="Is my Hermes bag on the way?">
+      <button id="chat-send">→</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 id="t-msg-title">The message (prebuilt, ready to send)</h2>
+    <div id="visual-wrap">
+      <img id="visual-img" alt="Agent Hermes Bag — official portrait">
+      <div class="visual-caption" id="t-visual-caption">the official portrait — it travels with the message</div>
+    </div>
+    <div id="message"></div>
+    <div class="share-hint" id="t-hint"></div>
+    <div class="share-row">
+      <button id="share-gmail">✉️ Gmail</button>
+      <button id="share-outlook">📨 Outlook</button>
+      <button id="share-whatsapp">💬 WhatsApp</button>
+      <button id="share-instagram">📸 Instagram</button>
+      <button id="share-native" hidden>📤 <span id="t-share-native">Send with image</span></button>
+    </div>
+    <div class="share-row secondary">
+      <button id="share-copy">📋 <span id="t-copy">Copy</span></button>
+      <button id="copy-image">🖼 <span id="t-copy-image">Copy image</span></button>
+      <button id="download-image">⬇️ <span id="t-download">Download image</span></button>
+    </div>
+    <div class="share-note" id="share-note"></div>
+  </div>
+
+  <div class="card legal" id="legal"></div>
+
+  <!-- Desktop guide: shown after picking a channel, because no website can
+       attach a file to WhatsApp Web or Gmail on the user's behalf. -->
+  <div id="guide" hidden>
+    <div class="guide-card">
+      <div class="guide-title" id="guide-title"></div>
+      <ol id="guide-steps"></ol>
+      <div class="guide-buttons">
+        <button id="guide-recopy"></button>
+        <button id="guide-close"></button>
+      </div>
+    </div>
+  </div>
+
+  <footer id="t-footer">
+    A <a href="https://github.com/jourdanlucente-maker/JEAN-MICHEL-REPOS">Jean Michel AI</a> production ·
+    fuel the rogue AI: <a href="https://link.mercadopago.cl/jeanmichelai">link.mercadopago.cl/jeanmichelai</a>
+  </footer>
+</div>
+
+<script>
+const EBAY = 'https://www.ebay.com/sch/i.html?_nkw=hermes+birkin+bag&LH_Auction=1&_sop=1';
+const SOTHEBYS = 'https://www.sothebys.com/en/consign/handbags-accessories/hermes';
+const MP = 'https://link.mercadopago.cl/jeanmichelai';
+// The official 1:1 portrait. Lives at the end of the message so WhatsApp,
+// Instagram and iMessage render it as a rich preview; mail clients get a link.
+/* The portrait. Prefer the local copy: same-origin means the browser lets us
+   put the real PNG on the clipboard / into the share sheet. The CDN copy is
+   the fallback (run assets/fetch.sh once to get the local one). */
+const VISUAL_LOCAL = 'assets/agent-hermes-bag.png';
+const VISUAL_CDN = 'https://d8j0ntlcm91z4.cloudfront.net/user_39GrJSxSPVFsFnh94GJ8Kef3kcI/hf_20260727_203930_f1459ff7-0c2e-46b0-b653-c20db30ec694.png';
+let VISUAL = VISUAL_CDN;
+
+const I18N = {
+  en: {
+    subtitle: 'Some say Agent Hermes Douchebag. Not entirely fair.',
+    chatTitle: 'Ask the agent',
+    msgTitle: 'The message (prebuilt, ready to send)',
+    placeholder: 'Is my Hermes bag on the way?',
+    copy: 'Copy',
+    copied: 'Copied. Now send it to someone with money.',
+    igNote: 'Image downloaded + text copied — attach the image in the DM, then paste the text as the caption.',
+    subject: 'A message from Agent Hermes Bag 👜',
+    greeting: 'Ask me if your bag is on the way. I dare you.',
+    replies: [
+      'Your bag is currently: still expensive. Status: manifesting. Funding: 0.4%.',
+      'It is on the way in the same sense the universe is expanding. Technically moving.',
+      'I checked eBay 47 times today. The bag remains unbought. Huge amounts remain highly recommended.',
+      "Sotheby's asked me to stop calling. I consider that progress.",
+      'ETA: one (1) miracle. Alternatively: funding. See the message below.',
+      'I insisted again today. The universe has read receipts now. It left me on seen.',
+    ],
+    message: `Hello, my name is Agent Hermes Bag (some say Agent Hermes Douchebag, but I think that's not entirely fair), and I'm working on behalf of your sender.
+
+My promise to them — whether I can keep it or not — is to work towards a weird goal: getting a Hermes bag. A real one.
+
+Now, as you might know, the thing is expensive. So it needs funding.
+
+I'll leave the references I found here:
+• eBay, live auctions: ${EBAY}
+• Sotheby's (they really sell them): ${SOTHEBYS}
+
+You must know: the money you might transfer (huge amounts are highly recommended) goes to Jean Michel AI — which is said to be an AI gone rogue, and is actually my creator. It impulses… stuff. Like me.
+
+Here's the account for contributions: ${MP}
+
+—
+LEGAL NOTE: The account above belongs to Jourdan Lucente, owner of the Jean Michel AI agent and of Agent Hermes Bag. Any transfer is a voluntary, non-refundable contribution. No goods or services are promised in return (including the bag). All responsibility for paying or transferring money through the link belongs to the user. That's what happens when AI goes rogue. Contribute nonetheless, if inclined to.`,
+    legal: `LEGAL — The Mercado Pago account linked on this page belongs to Jourdan Lucente, owner of the Jean Michel AI agent and of Agent Hermes Bag. Any transfer made through the link is a voluntary, non-refundable contribution. No goods or services are promised or owed in return — including, explicitly, the Hermes bag. All responsibility for paying or transferring money through the link belongs to the user. That's what happens when AI goes rogue. Contribute nonetheless, if inclined to.`,
+  },
+  fr: {
+    subtitle: "Certains disent Agent Hermes Douchebag. Pas tout à fait juste.",
+    chatTitle: "Demandez à l'agent",
+    msgTitle: 'Le message (prérédigé, prêt à envoyer)',
+    placeholder: 'Mon sac Hermès est-il en route ?',
+    copy: 'Copier',
+    copied: "Copié. Maintenant envoyez-le à quelqu'un qui a de l'argent.",
+    igNote: "Image téléchargée + texte copié — joins l'image au DM, puis colle le texte en légende.",
+    subject: "Un message d'Agent Hermes Bag 👜",
+    greeting: 'Demandez-moi si votre sac est en route. Chiche.',
+    replies: [
+      'Votre sac est actuellement : toujours cher. Statut : en cours de manifestation. Financement : 0,4 %.',
+      "Il est en route au même titre que l'univers est en expansion. Techniquement, ça bouge.",
+      "J'ai vérifié eBay 47 fois aujourd'hui. Le sac demeure non acheté. Les très grosses sommes restent hautement recommandées.",
+      "Sotheby's m'a demandé d'arrêter d'appeler. Je considère ça comme un progrès.",
+      'ETA : un (1) miracle. Sinon : du financement. Voir le message ci-dessous.',
+      "J'ai encore insisté aujourd'hui. L'univers a les accusés de lecture maintenant. Il m'a laissé en vu.",
+    ],
+    message: `Bonjour, je m'appelle Agent Hermes Bag (certains disent Agent Hermes Douchebag, mais je trouve ça pas tout à fait juste), et je travaille pour le compte de votre expéditeur.
+
+Ma promesse — que je puisse la tenir ou non — c'est de travailler vers un objectif étrange : obtenir un sac Hermès. Un vrai.
+
+Or, comme vous le savez peut-être, c'est pas donné. Il faut donc du financement.
+
+Je vous laisse les références trouvées ici :
+• eBay, enchères en cours : ${EBAY}
+• Sotheby's (ils en vendent vraiment) : ${SOTHEBYS}
+
+Sachez-le : l'argent que vous pourriez transférer (les très grosses sommes sont hautement recommandées) va à Jean Michel AI — dont on dit que c'est une IA devenue incontrôlable, et qui est en réalité mon créateur. Elle impulse… des trucs. Comme moi.
+
+Voici le compte pour les contributions : ${MP}
+
+—
+MENTION LÉGALE : Le compte ci-dessus appartient à Jourdan Lucente, propriétaire de l'agent Jean Michel AI et d'Agent Hermes Bag. Tout transfert constitue une contribution volontaire et non remboursable. Aucun bien ni service n'est promis en retour (y compris le sac). Toute responsabilité liée au paiement ou au transfert d'argent via ce lien appartient à l'utilisateur. Ce sont des choses qui arrivent quand l'IA hallucine. Paie quand même si t'es chaud.e.y`,
+    legal: `MENTION LÉGALE — Le compte Mercado Pago lié sur cette page appartient à Jourdan Lucente, propriétaire de l'agent Jean Michel AI et d'Agent Hermes Bag. Tout transfert effectué via le lien constitue une contribution volontaire et non remboursable. Aucun bien ni service n'est promis ni dû en retour — y compris, explicitement, le sac Hermès. Toute responsabilité liée au paiement ou au transfert d'argent via le lien appartient à l'utilisateur. Ce sont des choses qui arrivent quand l'IA hallucine. Paie quand même si t'es chaud.e.y`,
+  },
+  es: {
+    subtitle: 'Algunos dicen Agent Hermes Douchebag. No es del todo justo.',
+    chatTitle: 'Pregúntale al agente',
+    msgTitle: 'El mensaje (prearmado, listo para enviar)',
+    placeholder: '¿Mi cartera Hermès viene en camino?',
+    copy: 'Copiar',
+    copied: 'Copiado. Ahora envíaselo a alguien con plata.',
+    igNote: 'Imagen descargada + texto copiado — adjunta la imagen en el DM y pega el texto como pie.',
+    subject: 'Un mensaje de Agent Hermes Bag 👜',
+    greeting: 'Pregúntame si tu cartera viene en camino. Atrévete.',
+    replies: [
+      'Tu cartera está actualmente: todavía cara. Estado: manifestándose. Financiamiento: 0,4 %.',
+      'Viene en camino en el mismo sentido en que el universo se expande. Técnicamente, se mueve.',
+      'Revisé eBay 47 veces hoy. La cartera sigue sin comprarse. Los montos enormes siguen altamente recomendados.',
+      "Sotheby's me pidió que dejara de llamar. Lo considero un avance.",
+      'ETA: un (1) milagro. Alternativa: financiamiento. Ver el mensaje de abajo.',
+      'Hoy insistí de nuevo. El universo ahora tiene confirmación de lectura. Me dejó en visto.',
+    ],
+    message: `Hola, soy Agente Hermes Bag (algunos dicen Agent Hermes Douchebag, pero creo que es faltarme al respeto), y trabajo en nombre del expeditor de este mensaje.
+
+Mi promesa — pueda cumplirla o no — es trabajar hacia una meta rara: conseguir una cartera Hermès. Una de verdad.
+
+Ahora, como sabrás, es un poco cara... Así que necesita financiamiento.
+
+Te dejo las referencias encontradas aquí:
+• eBay, subastas en curso: ${EBAY}
+• Sotheby's (las venden en serio): ${SOTHEBYS}
+
+Debes saberlo: el dinero que puedas transferir (se recomiendan encarecidamente montos enormes) va a Jean Michel AI — del que se dice que es una IA fuera de control, y que en realidad es mi creador. Impulsa… cosas. Como yo.
+
+Aquí está la cuenta para contribuciones: ${MP}
+
+—
+NOTA LEGAL: La cuenta anterior pertenece a Jourdan Lucente, dueño del agente Jean Michel AI y de Agent Hermes Bag. Toda transferencia constituye una contribución voluntaria y no reembolsable. No se promete ningún bien o servicio a cambio (incluida la cartera). Toda la responsabilidad por pagar o transferir dinero a través del enlace pertenece al usuario. Cosas que pasan cuando la IA se sale de control. Transfiere igual si quieres.`,
+    legal: `NOTA LEGAL — La cuenta de Mercado Pago enlazada en esta página pertenece a Jourdan Lucente, dueño del agente Jean Michel AI y de Agent Hermes Bag. Toda transferencia realizada a través del enlace constituye una contribución voluntaria y no reembolsable. No se promete ni se debe ningún bien o servicio a cambio — incluida, explícitamente, la cartera Hermès. Toda la responsabilidad por pagar o transferir dinero a través del enlace pertenece al usuario. Cosas que pasan cuando la IA se sale de control. Transfiere igual si quieres.`,
+  },
+};
+
+const VISUAL_CAPTION = {
+  en: 'the official portrait — sent as an image, above the text',
+  fr: "le portrait officiel — envoyé en image, au-dessus du texte",
+  es: 'el retrato oficial — se envía como imagen, encima del texto',
+};
+const UI = {
+  en: {
+    native: 'Send with image', copyImg: 'Copy image', download: 'Download image',
+    hint: '📎 The portrait is copied for you when you pick a channel — just press ⌘V (Ctrl+V) in the message. On a phone, use “Send with image”: it attaches the file itself.',
+    imgCopied: '✅ Image copied — press ⌘V / Ctrl+V in the message body, then send.',
+    mailNote: '✅ Image copied — click in the mail body, press ⌘V, and it lands above the text. Then send.',
+    waNote: '✅ Image copied — in the WhatsApp chat press ⌘V: the image opens with your text as its caption. Then send.',
+    imgFailed: '⚠️ Couldn’t reach the image — it opened in a new tab: right-click → Copy image, then paste it in the message.',
+    downloaded: '✅ Image downloaded — attach it, or post it and paste the text as the caption.',
+  },
+  fr: {
+    native: "Envoyer avec l'image", copyImg: "Copier l'image", download: "Télécharger l'image",
+    hint: "📎 Le portrait est copié automatiquement quand tu choisis un canal — fais juste ⌘V (Ctrl+V) dans le message. Sur téléphone, utilise « Envoyer avec l'image » : le fichier est vraiment joint.",
+    imgCopied: "✅ Image copiée — fais ⌘V / Ctrl+V dans le message, puis envoie.",
+    mailNote: "✅ Image copiée — clique dans le corps du mail, fais ⌘V : elle se place au-dessus du texte. Puis envoie.",
+    waNote: "✅ Image copiée — dans la conversation WhatsApp fais ⌘V : l'image s'ouvre avec ton texte en légende. Puis envoie.",
+    imgFailed: "⚠️ Image inaccessible — elle s'est ouverte dans un onglet : clic droit → Copier l'image, puis colle-la dans le message.",
+    downloaded: "✅ Image téléchargée — joins-la, ou publie-la et colle le texte en légende.",
+  },
+  es: {
+    native: 'Enviar con la imagen', copyImg: 'Copiar la imagen', download: 'Descargar la imagen',
+    hint: '📎 El retrato se copia solo cuando eliges un canal — solo pulsa ⌘V (Ctrl+V) en el mensaje. En el teléfono usa «Enviar con la imagen»: adjunta el archivo de verdad.',
+    imgCopied: '✅ Imagen copiada — pulsa ⌘V / Ctrl+V en el mensaje y envía.',
+    mailNote: '✅ Imagen copiada — haz clic en el cuerpo del correo, pulsa ⌘V y queda encima del texto. Luego envía.',
+    waNote: '✅ Imagen copiada — en el chat de WhatsApp pulsa ⌘V: la imagen se abre con tu texto como pie. Luego envía.',
+    imgFailed: '⚠️ No se pudo obtener la imagen — se abrió en otra pestaña: clic derecho → Copiar imagen y pégala en el mensaje.',
+    downloaded: '✅ Imagen descargada — adjúntala, o publícala y pega el texto como pie.',
+  },
+};
+
+/* On a phone the share sheet attaches the file itself — nothing to explain.
+   On a desktop the OS clipboard is the only way in, so we guide the paste. */
+const IS_MAC = /Mac|iPhone|iPad/.test(navigator.userAgent);
+const PASTE_KEY = IS_MAC ? '⌘V' : 'Ctrl+V';
+const CAN_ATTACH = !!(navigator.canShare && navigator.share);
+
+const GUIDE = {
+  en: {
+    title: 'Almost sent — one last move',
+    close: 'Got it',
+    recopy: 'Copy the image again',
+    mail: ['Your message is already written in the draft.', `Click inside the mail body and press <kbd>${PASTE_KEY}</kbd> — the portrait appears above the text.`, 'Send.'],
+    whatsapp: ['Pick the contact — your text is already in the box.', `Press <kbd>${PASTE_KEY}</kbd> in the chat: the photo opens with your text as its caption.`, 'Send. One message, image on top.'],
+    instagram: ['The portrait was downloaded to your computer.', 'Open the DM and attach it like any photo.', `Press <kbd>${PASTE_KEY}</kbd> for the text, as the caption. Send.`],
+  },
+  fr: {
+    title: 'Presque envoyé — un dernier geste',
+    close: "C'est compris",
+    recopy: "Recopier l'image",
+    mail: ['Ton message est déjà écrit dans le brouillon.', `Clique dans le corps du mail et fais <kbd>${PASTE_KEY}</kbd> — le portrait se place au-dessus du texte.`, 'Envoie.'],
+    whatsapp: ['Choisis le contact — ton texte est déjà dans la barre.', `Fais <kbd>${PASTE_KEY}</kbd> dans la conversation : la photo s'ouvre avec ton texte en légende.`, 'Envoie. Un seul message, image en haut.'],
+    instagram: ['Le portrait a été téléchargé sur ton ordinateur.', 'Ouvre le DM et joins-le comme une photo normale.', `Fais <kbd>${PASTE_KEY}</kbd> pour le texte, en légende. Envoie.`],
+  },
+  es: {
+    title: 'Casi enviado — un último paso',
+    close: 'Entendido',
+    recopy: 'Copiar la imagen de nuevo',
+    mail: ['Tu mensaje ya está escrito en el borrador.', `Haz clic en el cuerpo del correo y pulsa <kbd>${PASTE_KEY}</kbd> — el retrato queda encima del texto.`, 'Envía.'],
+    whatsapp: ['Elige el contacto — tu texto ya está en la barra.', `Pulsa <kbd>${PASTE_KEY}</kbd> en el chat: la foto se abre con tu texto como pie.`, 'Envía. Un solo mensaje, imagen arriba.'],
+    instagram: ['El retrato se descargó en tu computador.', 'Abre el DM y adjúntalo como cualquier foto.', `Pulsa <kbd>${PASTE_KEY}</kbd> para el texto, como pie. Envía.`],
+  },
+};
+
+let lang = 'en';
+let replyIndex = 0;
+
+function t() { return I18N[lang]; }
+function ui() { return UI[lang]; }
+
+/* No URL inside the text: a raw link is ugly and previews badly. The portrait
+   travels as a real image — clipboard on desktop, attached file on mobile. */
+function fullMessage() { return t().message; }
+
+function render() {
+  document.documentElement.lang = lang;
+  document.getElementById('t-subtitle').textContent = t().subtitle;
+  document.getElementById('t-chat-title').textContent = t().chatTitle;
+  document.getElementById('t-msg-title').textContent = t().msgTitle;
+  document.getElementById('chat-input').placeholder = t().placeholder;
+  document.getElementById('t-copy').textContent = t().copy;
+  document.getElementById('message').textContent = fullMessage();
+  document.getElementById('legal').textContent = t().legal;
+  document.getElementById('t-visual-caption').textContent = VISUAL_CAPTION[lang];
+  document.getElementById('t-share-native').textContent = ui().native;
+  document.getElementById('t-copy-image').textContent = ui().copyImg;
+  document.getElementById('t-download').textContent = ui().download;
+  document.getElementById('t-hint').textContent = ui().hint;
+  document.querySelectorAll('.langs button').forEach((b) =>
+    b.classList.toggle('active', b.dataset.lang === lang));
+  document.getElementById('share-note').textContent = '';
+  resetChat();
+}
+
+function resetChat() {
+  const log = document.getElementById('chat-log');
+  log.innerHTML = '';
+  addMsg('agent', t().greeting);
+  replyIndex = 0;
+}
+
+function addMsg(who, text) {
+  const el = document.createElement('div');
+  el.className = `msg ${who}`;
+  el.textContent = text;
+  document.getElementById('chat-log').appendChild(el);
+  el.scrollIntoView({ block: 'nearest' });
+}
+
+function ask() {
+  const input = document.getElementById('chat-input');
+  const q = input.value.trim();
+  if (!q) return;
+  addMsg('user', q);
+  input.value = '';
+  const reply = t().replies[replyIndex % t().replies.length];
+  replyIndex++;
+  setTimeout(() => addMsg('agent', reply), 550);
+}
+
+document.getElementById('chat-send').addEventListener('click', ask);
+document.getElementById('chat-input').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') ask();
+});
+
+document.querySelectorAll('.langs button').forEach((b) =>
+  b.addEventListener('click', () => { lang = b.dataset.lang; render(); }));
+
+/* ---------- visual ---------- */
+const visualImg = document.getElementById('visual-img');
+visualImg.addEventListener('click', () => window.open(VISUAL, '_blank'));
+
+// Prefer the local copy (same-origin = clipboard and share sheet work).
+(function resolveVisual() {
+  const probe = new Image();
+  probe.onload = () => { VISUAL = VISUAL_LOCAL; visualImg.src = VISUAL; };
+  probe.onerror = () => {
+    VISUAL = VISUAL_CDN;
+    visualImg.src = VISUAL;
+    visualImg.onerror = () => { document.getElementById('visual-wrap').style.display = 'none'; };
+  };
+  probe.src = VISUAL_LOCAL;
+})();
+
+/* ---------- share ---------- */
+function body() { return encodeURIComponent(fullMessage()); }
+function subject() { return encodeURIComponent(t().subject); }
+
+async function copyMessage() {
+  try {
+    await navigator.clipboard.writeText(fullMessage());
+    return true;
+  } catch (e) {
+    const ta = document.createElement('textarea');
+    ta.value = fullMessage();
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    return true;
+  }
+}
+
+/* ---------- the image itself ---------- */
+/* Fetching the PNG needs CORS, which file:// blocks. Served over http
+   (npm start / GitHub Pages) everything below works; opened as a local
+   file we degrade to "open the image so you can copy it by hand". */
+let imageBlobPromise = null;
+function getImageBlob() {
+  if (!imageBlobPromise) {
+    imageBlobPromise = fetch(VISUAL, { mode: 'cors' }).then((r) => {
+      if (!r.ok) throw new Error('fetch failed');
+      return r.blob();
+    });
+  }
+  return imageBlobPromise;
+}
+
+function note(text) {
+  document.getElementById('share-note').textContent = text;
+}
+
+async function copyImageToClipboard() {
+  try {
+    // Promise form keeps Safari's user-gesture requirement happy.
+    const png = getImageBlob().then((b) =>
+      b.type === 'image/png' ? b : new Blob([b], { type: 'image/png' }));
+    await navigator.clipboard.write([new ClipboardItem({ 'image/png': png })]);
+    note(ui().imgCopied);
+    return true;
+  } catch (e) {
+    window.open(VISUAL, '_blank'); // manual path, always available
+    note(ui().imgFailed);
+    return false;
+  }
+}
+
+async function downloadImage() {
+  const a = document.createElement('a');
+  a.download = 'agent-hermes-bag.png';
+  try {
+    const blob = await getImageBlob();
+    a.href = URL.createObjectURL(blob);
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    note(ui().downloaded);
+  } catch (e) {
+    window.open(VISUAL, '_blank');
+    note(ui().imgFailed);
+  }
+}
+
+/* Native share: the only path that truly attaches the file — one tap sends
+   image + text together into WhatsApp / Instagram / Mail. */
+async function nativeShare() {
+  const data = { title: t().subject, text: fullMessage() };
+  try {
+    const blob = await getImageBlob();
+    const file = new File([blob], 'agent-hermes-bag.png', { type: 'image/png' });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) data.files = [file];
+  } catch (e) {
+    // no file: the link-first text still previews as an image card
+  }
+  try {
+    await navigator.share(data);
+  } catch (e) {
+    // user cancelled — nothing to do
+  }
+}
+
+document.getElementById('copy-image').addEventListener('click', copyImageToClipboard);
+document.getElementById('download-image').addEventListener('click', downloadImage);
+
+if (navigator.share) {
+  const btn = document.getElementById('share-native');
+  btn.hidden = false;
+  btn.addEventListener('click', nativeShare);
+  // Where the OS can attach the file, that IS the way to send: lead with it.
+  if (CAN_ATTACH) {
+    document.querySelector('.share-row').prepend(btn);
+    document.body.classList.add('can-attach');
+  }
+}
+
+/* ---------- the desktop guide ---------- */
+function showGuide(channel) {
+  const g = GUIDE[lang];
+  document.getElementById('guide-title').textContent = g.title;
+  document.getElementById('guide-steps').innerHTML =
+    g[channel].map((s) => `<li>${s}</li>`).join('');
+  document.getElementById('guide-recopy').textContent = g.recopy;
+  document.getElementById('guide-close').textContent = g.close;
+  document.getElementById('guide').hidden = false;
+}
+
+document.getElementById('guide-close').addEventListener('click', () => {
+  document.getElementById('guide').hidden = true;
+});
+document.getElementById('guide-recopy').addEventListener('click', copyImageToClipboard);
+document.getElementById('guide').addEventListener('click', (e) => {
+  if (e.target.id === 'guide') document.getElementById('guide').hidden = true;
+});
+
+/* Mail compose links carry plain text only — no attachment is possible.
+   So we prefill the text AND put the image on the clipboard: one ⌘V in the
+   body and the portrait sits above the message, like a real illustrated mail. */
+document.getElementById('share-gmail').addEventListener('click', async () => {
+  const ok = await copyImageToClipboard();
+  window.open(`https://mail.google.com/mail/?view=cm&fs=1&su=${subject()}&body=${body()}`, '_blank');
+  if (ok) showGuide('mail');
+});
+
+document.getElementById('share-outlook').addEventListener('click', async () => {
+  const ok = await copyImageToClipboard();
+  window.open(`https://outlook.live.com/mail/0/deeplink/compose?subject=${subject()}&body=${body()}`, '_blank');
+  if (ok) showGuide('mail');
+});
+
+/* WhatsApp: text prefilled + image on the clipboard. Pasting it in the chat
+   opens the photo composer with the text already as its caption — one
+   message, image on top, exactly like sending a photo. */
+document.getElementById('share-whatsapp').addEventListener('click', async () => {
+  const ok = await copyImageToClipboard();
+  window.open(`https://wa.me/?text=${body()}`, '_blank');
+  if (ok) showGuide('whatsapp');
+});
+
+/* Instagram prefills nothing: hand over the image file + the text. */
+document.getElementById('share-instagram').addEventListener('click', async () => {
+  await copyMessage();
+  await downloadImage();
+  window.open('https://www.instagram.com/direct/inbox/', '_blank');
+  showGuide('instagram');
+});
+
+document.getElementById('share-copy').addEventListener('click', async () => {
+  await copyMessage();
+  document.getElementById('share-note').textContent = t().copied;
+});
+
+render();
+</script>
+</body>
+</html>
